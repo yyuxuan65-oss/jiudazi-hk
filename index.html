@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>酒搭子出逃團 · 香港遊</title>
+<style>
+  :root {
+    --bg: #0e0b1a;
+    --bg2: #151126;
+    --card: #1a1530;
+    --line: #2a2344;
+    --txt: #f5f0e8;
+    --sub: #a89fc4;
+    --orange: #ff6b35;
+    --orange-glow: rgba(255, 107, 53, 0.35);
+    --purple: #b44dff;
+    --purple-glow: rgba(180, 77, 255, 0.35);
+    --pink: #ff4d8d;
+    --gold: #f0c24b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--txt);
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "PingFang TC", "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 60px; }
+
+  /* Hero */
+  .hero {
+    position: relative;
+    padding: 64px 0 40px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: -60px -40px;
+    background:
+      radial-gradient(circle at 20% 20%, var(--orange-glow), transparent 45%),
+      radial-gradient(circle at 80% 30%, var(--purple-glow), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(255,77,141,0.25), transparent 50%);
+    filter: blur(30px);
+    z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+  .emoji-row { font-size: 22px; letter-spacing: 6px; margin-bottom: 14px; opacity: 0.9; }
+  h1 {
+    font-size: clamp(30px, 7vw, 44px);
+    font-weight: 800;
+    letter-spacing: 1px;
+    background: linear-gradient(120deg, #ff9a5c, #ff6b35 30%, #ff4d8d 60%, #b44dff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    color: var(--sub);
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .slogan {
+    margin: 20px auto 0;
+    max-width: 460px;
+    font-size: 16px;
+    color: var(--txt);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 18px;
+    font-weight: 500;
+  }
+  .slogan b { color: var(--gold); }
+
+  /* Section labels */
+  .sec-label {
+    display: flex; align-items: center; gap: 10px;
+    margin: 38px 0 14px;
+    font-size: 17px; font-weight: 700; letter-spacing: 1px;
+  }
+  .sec-label .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .sec-label.day { color: var(--orange); }
+  .sec-label.day .dot { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
+  .sec-label.night { color: var(--purple); }
+  .sec-label.night .dot { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+  .sec-label.after { color: var(--pink); }
+  .sec-label.after .dot { background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+  .sec-label .hint { font-size: 13px; font-weight: 400; color: var(--sub); margin-left: auto; }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 26px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
+    width: 2px; background: var(--line);
+  }
+  .tl-item { position: relative; padding: 8px 0 8px 14px; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -22px; top: 17px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--line);
+  }
+  .tl-item.day::before { border-color: var(--orange); background: var(--orange); box-shadow: 0 0 8px var(--orange-glow); }
+  .tl-item.night::before { border-color: var(--purple); background: var(--purple); box-shadow: 0 0 8px var(--purple-glow); }
+  .tl-item.after::before { border-color: var(--pink); background: var(--pink); box-shadow: 0 0 8px rgba(255,77,141,0.4); }
+  .tl-time {
+    font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+    font-variant-numeric: tabular-nums;
+    display: inline-block; min-width: 52px;
+  }
+  .tl-item.day .tl-time { color: var(--orange); }
+  .tl-item.night .tl-time { color: var(--purple); }
+  .tl-item.after .tl-time { color: var(--pink); }
+  .tl-name { font-size: 16px; font-weight: 600; }
+  .tl-item.hl .tl-name { font-size: 17px; }
+  .star { color: var(--gold); }
+  .tl-note { font-size: 13px; color: var(--sub); margin-top: 1px; }
+  .tl-item.hl {
+    background: linear-gradient(90deg, rgba(255,107,53,0.08), transparent 70%);
+    border-radius: 10px;
+  }
+  .tl-item.hl2 { background: linear-gradient(90deg, rgba(180,77,255,0.08), transparent 70%); border-radius: 10px; }
+  .badge {
+    display: inline-block; font-size: 11px; font-weight: 600;
+    padding: 1px 8px; border-radius: 20px; margin-left: 6px; vertical-align: 2px;
+    letter-spacing: 0.5px;
+  }
+  .badge.up { background: rgba(255,107,53,0.15); color: var(--orange); }
+  .badge.down { background: rgba(180,77,255,0.15); color: var(--purple); }
+  .badge.ghost { background: rgba(255,77,141,0.15); color: var(--pink); }
+
+  /* Info cards */
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+  .info-card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 16px;
+  }
+  .info-card .k { font-size: 12px; color: var(--sub); letter-spacing: 1px; margin-bottom: 4px; }
+  .info-card .v { font-size: 16px; font-weight: 700; }
+  .info-card .v small { font-size: 12px; color: var(--sub); font-weight: 400; }
+  .info-card.warn { border-color: rgba(255,107,53,0.4); }
+  .info-card.warn .v { color: var(--orange); }
+
+  .tips {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px; margin-top: 12px;
+  }
+  .tips h3 { font-size: 15px; margin-bottom: 10px; color: var(--gold); letter-spacing: 1px; }
+  .tips li { list-style: none; padding: 5px 0 5px 22px; position: relative; font-size: 14px; color: var(--txt); }
+  .tips li::before { content: "•"; position: absolute; left: 6px; color: var(--orange); font-weight: 700; }
+
+  footer {
+    text-align: center; margin-top: 44px; color: var(--sub);
+    font-size: 12px; letter-spacing: 1px;
+  }
+  footer .heart { color: var(--pink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="emoji-row">🎃 👻 🦇 🍻</div>
+    <h1>酒搭子出逃團 · 香港遊</h1>
+    <div class="subtitle">2026.10.24 · 週六 · 海洋公園萬聖節 + 蘭桂坊</div>
+    <div class="slogan">白天刷刺激、闖鬼屋，晚上蘭桂坊續攤喝酒 ——<br>這才是<b>酒搭子</b>的香港一日。</div>
+  </div>
+
+  <!-- 白天 -->
+  <div class="sec-label day"><span class="dot"></span>白天 · 海洋公園刺激 <span class="hint">12:00–16:45</span></div>
+  <div class="timeline">
+    <div class="tl-item day"><span class="tl-time">12:00</span> <span class="tl-name">入園 · 海洋奇觀</span><div class="tl-note">大魚缸快速看一眼</div></div>
+    <div class="tl-item day"><span class="tl-time">12:30</span> <span class="tl-name">海洋列車上山 <span class="badge up">↑ 上山</span></span><div class="tl-note">4 分鐘直達，不排纜車</div></div>
+    <div class="tl-item day hl"><span class="tl-time">12:45</span> <span class="tl-name">翻天覆地 <span class="star">★ 最猛</span></span><div class="tl-note">3.9G · 60km/h · 360° 迴旋</div></div>
+    <div class="tl-item day hl"><span class="tl-time">13:15</span> <span class="tl-name">動感快車（過山車）</span><div class="tl-note">招牌過山車 · 140cm+</div></div>
+    <div class="tl-item day hl"><span class="tl-time">13:45</span> <span class="tl-name">狂野龍捲風</span><div class="tl-note">4G 風車式</div></div>
+    <div class="tl-item day hl"><span class="tl-time">14:15</span> <span class="tl-name">沖天搖擺船</span><div class="tl-note">20 米高 · 45° 俯衝</div></div>
+    <div class="tl-item day"><span class="tl-time">14:30</span> <span class="tl-name">午餐（簡餐）</span></div>
+    <div class="tl-item day"><span class="tl-time">15:15</span> <span class="tl-name">南極奇觀（企鵝）</span><div class="tl-note">全園最冷，吹冷氣回血</div></div>
+    <div class="tl-item day"><span class="tl-time">15:50</span> <span class="tl-name">水母萬花筒</span><div class="tl-note">暗廳鏡面，最出片</div></div>
+    <div class="tl-item day"><span class="tl-time">16:20</span> <span class="tl-name">海洋摩天塔</span><div class="tl-note">看全景 + 歇腿</div></div>
+  </div>
+
+  <!-- 夜晚 -->
+  <div class="sec-label night"><span class="dot"></span>夜晚 · 萬聖節 + 鬼屋 <span class="hint">17:00–21:00</span></div>
+  <div class="timeline">
+    <div class="tl-item night hl2"><span class="tl-time">17:00</span> <span class="tl-name">陰陽路之棺材仔 <span class="star">★ 鬼屋</span></span><div class="tl-note">一開門就衝！晚了排 60–90 分鐘</div></div>
+    <div class="tl-item night"><span class="tl-time">17:45</span> <span class="tl-name">香港靈異結界</span><div class="tl-note">120+ 嘩鬼打卡，免費</div></div>
+    <div class="tl-item night"><span class="tl-time">18:00</span> <span class="tl-name">Cosplay 厲鬼派對</span><div class="tl-note">高峰廣場，全港最大型</div></div>
+    <div class="tl-item night hl2"><span class="tl-time">18:30</span> <span class="tl-name">詭域瘋人院 <span class="badge ghost">鬼屋 2</span></span><div class="tl-note">骨傳導耳機，驚嚇指數 5</div></div>
+    <div class="tl-item night"><span class="tl-time">19:15</span> <span class="tl-name">晚餐</span></div>
+    <div class="tl-item night"><span class="tl-time">20:10</span> <span class="tl-name">海洋列車下山 <span class="badge down">↓ 下山</span></span><div class="tl-note">暗黑版車廂，閃燈鬼影</div></div>
+    <div class="tl-item night"><span class="tl-time">20:30</span> <span class="tl-name">光影盛夜</span><div class="tl-note">燈光投影，看一眼</div></div>
+    <div class="tl-item night"><span class="tl-time">21:00</span> <span class="tl-name">離場 → 港鐵中環</span><div class="tl-note">南港島線約 15 分鐘</div></div>
+  </div>
+
+  <!-- 深夜 -->
+  <div class="sec-label after"><span class="dot"></span>深夜 · 蘭桂坊續攤 <span class="hint">21:15+</span></div>
+  <div class="timeline">
+    <div class="tl-item after hl"><span class="tl-time">21:15</span> <span class="tl-name">到中環，直落蘭桂坊 <span class="star">🍻</span></span><div class="tl-note">酒搭子主場，喝起來</div></div>
+  </div>
+
+  <!-- 實用信息 -->
+  <div class="sec-label day"><span class="dot"></span>實用信息 <span class="hint">出門前看</span></div>
+  <div class="info-grid">
+    <div class="info-card"><div class="k">門票</div><div class="v">HK$538 <small>成人</small> + HK$280 <small>三重驚嚇</small></div></div>
+    <div class="info-card"><div class="k">天氣</div><div class="v">26°C 多雲 <small>晚上帶薄外套</small></div></div>
+    <div class="info-card warn"><div class="k">鬼屋開放</div><div class="v">17:00 – 23:00</div></div>
+    <div class="info-card warn"><div class="k">機動遊戲關閉</div><div class="v">18:30 關</div></div>
+    <div class="info-card"><div class="k">纜車收班</div><div class="v">18:30 <small>之後只坐列車</small></div></div>
+    <div class="info-card"><div class="k">鬼屋路線</div><div class="v">山上 2 個 <small>不折返</small></div></div>
+  </div>
+
+  <div class="tips">
+    <h3>三個提醒</h3>
+    <li><b>刺激項目 18:30 前刷完</b> —— 高峰日排隊 20–40 分鐘/項，4 個刺激是上限，別貪多。</li>
+    <li><b>午餐要嘛入園前吃、要嘛 14:30 山上簡餐</b>，別在飯點跟人擠。</li>
+    <li><b>鬼屋就玩山上 2 個</b>（陰陽路 + 詭域瘋人院），山下的 Voodoo Boo 要下山、你 21:00 要走，跳過。</li>
+  </div>
+
+  <footer>酒搭子出逃團 · 2026.10.24 <span class="heart">♥</span> 香港</footer>
+</div>
+</body>
+</html>
