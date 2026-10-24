@@ -32,58 +32,33 @@
   .wrap { max-width: 640px; margin: 0 auto; padding: 0 20px 60px; }
 
   /* Hero */
-  .hero {
-    position: relative;
-    padding: 64px 0 40px;
-    text-align: center;
-    overflow: hidden;
-  }
+  .hero { position: relative; padding: 64px 0 40px; text-align: center; overflow: hidden; }
   .hero::before {
-    content: "";
-    position: absolute; inset: -60px -40px;
+    content: ""; position: absolute; inset: -60px -40px;
     background:
       radial-gradient(circle at 20% 20%, var(--orange-glow), transparent 45%),
       radial-gradient(circle at 80% 30%, var(--purple-glow), transparent 45%),
       radial-gradient(circle at 50% 90%, rgba(255,77,141,0.25), transparent 50%);
-    filter: blur(30px);
-    z-index: 0;
+    filter: blur(30px); z-index: 0;
   }
   .hero > * { position: relative; z-index: 1; }
   .emoji-row { font-size: 22px; letter-spacing: 6px; margin-bottom: 14px; opacity: 0.9; }
   h1 {
-    font-size: clamp(30px, 7vw, 44px);
-    font-weight: 800;
-    letter-spacing: 1px;
+    font-size: clamp(30px, 7vw, 44px); font-weight: 800; letter-spacing: 1px;
     background: linear-gradient(120deg, #ff9a5c, #ff6b35 30%, #ff4d8d 60%, #b44dff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; margin-bottom: 12px;
   }
-  .subtitle {
-    color: var(--sub);
-    font-size: 15px;
-    letter-spacing: 1px;
-  }
+  .subtitle { color: var(--sub); font-size: 15px; letter-spacing: 1px; }
   .slogan {
-    margin: 20px auto 0;
-    max-width: 460px;
-    font-size: 16px;
-    color: var(--txt);
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 14px 18px;
-    font-weight: 500;
+    margin: 20px auto 0; max-width: 460px; font-size: 16px; color: var(--txt);
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 14px 18px; font-weight: 500;
   }
   .slogan b { color: var(--gold); }
 
   /* Section labels */
-  .sec-label {
-    display: flex; align-items: center; gap: 10px;
-    margin: 38px 0 14px;
-    font-size: 17px; font-weight: 700; letter-spacing: 1px;
-  }
+  .sec-label { display: flex; align-items: center; gap: 10px; margin: 38px 0 14px; font-size: 17px; font-weight: 700; letter-spacing: 1px; }
   .sec-label .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .sec-label.day { color: var(--orange); }
   .sec-label.day .dot { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
@@ -91,28 +66,38 @@
   .sec-label.night .dot { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
   .sec-label.after { color: var(--pink); }
   .sec-label.after .dot { background: var(--pink); box-shadow: 0 0 10px var(--pink); }
+  .sec-label.map { color: var(--gold); }
+  .sec-label.map .dot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
   .sec-label .hint { font-size: 13px; font-weight: 400; color: var(--sub); margin-left: auto; }
+
+  /* Map */
+  .map { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 16px; }
+  .zone { border-radius: 12px; padding: 14px; }
+  .zone.summit { border: 1px solid rgba(255,107,53,0.45); background: linear-gradient(180deg, rgba(255,107,53,0.08), transparent); }
+  .zone.waterfront { border: 1px solid rgba(180,77,255,0.45); background: linear-gradient(180deg, rgba(180,77,255,0.08), transparent); }
+  .zone-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; letter-spacing: 1px; }
+  .zone.summit .zone-title { color: var(--orange); }
+  .zone.waterfront .zone-title { color: var(--purple); }
+  .zone-body { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .zcell { background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; }
+  .zcell.ghost { border-color: rgba(255,77,141,0.5); }
+  .zc-name { font-size: 12px; color: var(--sub); letter-spacing: 0.5px; margin-bottom: 4px; }
+  .zcell.ghost .zc-name { color: var(--pink); }
+  .zc-items { font-size: 13.5px; font-weight: 600; line-height: 1.5; }
+  .zc-items .star { color: var(--gold); }
+  .transit { text-align: center; margin: 12px 0; font-size: 13px; color: var(--gold); letter-spacing: 1px; font-weight: 600; }
+  .transit .arrow { font-size: 15px; }
+  .map-note { font-size: 12px; color: var(--sub); margin-top: 12px; text-align: center; }
 
   /* Timeline */
   .timeline { position: relative; padding-left: 26px; }
-  .timeline::before {
-    content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
-    width: 2px; background: var(--line);
-  }
+  .timeline::before { content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
   .tl-item { position: relative; padding: 8px 0 8px 14px; }
-  .tl-item::before {
-    content: ""; position: absolute; left: -22px; top: 17px;
-    width: 10px; height: 10px; border-radius: 50%;
-    background: var(--bg); border: 2px solid var(--line);
-  }
+  .tl-item::before { content: ""; position: absolute; left: -22px; top: 17px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--line); }
   .tl-item.day::before { border-color: var(--orange); background: var(--orange); box-shadow: 0 0 8px var(--orange-glow); }
   .tl-item.night::before { border-color: var(--purple); background: var(--purple); box-shadow: 0 0 8px var(--purple-glow); }
   .tl-item.after::before { border-color: var(--pink); background: var(--pink); box-shadow: 0 0 8px rgba(255,77,141,0.4); }
-  .tl-time {
-    font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
-    font-variant-numeric: tabular-nums;
-    display: inline-block; min-width: 52px;
-  }
+  .tl-time { font-size: 14px; font-weight: 700; letter-spacing: 0.5px; font-variant-numeric: tabular-nums; display: inline-block; min-width: 52px; }
   .tl-item.day .tl-time { color: var(--orange); }
   .tl-item.night .tl-time { color: var(--purple); }
   .tl-item.after .tl-time { color: var(--pink); }
@@ -120,44 +105,28 @@
   .tl-item.hl .tl-name { font-size: 17px; }
   .star { color: var(--gold); }
   .tl-note { font-size: 13px; color: var(--sub); margin-top: 1px; }
-  .tl-item.hl {
-    background: linear-gradient(90deg, rgba(255,107,53,0.08), transparent 70%);
-    border-radius: 10px;
-  }
+  .tl-item.hl { background: linear-gradient(90deg, rgba(255,107,53,0.08), transparent 70%); border-radius: 10px; }
   .tl-item.hl2 { background: linear-gradient(90deg, rgba(180,77,255,0.08), transparent 70%); border-radius: 10px; }
-  .badge {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    padding: 1px 8px; border-radius: 20px; margin-left: 6px; vertical-align: 2px;
-    letter-spacing: 0.5px;
-  }
+  .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 20px; margin-left: 6px; vertical-align: 2px; letter-spacing: 0.5px; }
   .badge.up { background: rgba(255,107,53,0.15); color: var(--orange); }
   .badge.down { background: rgba(180,77,255,0.15); color: var(--purple); }
   .badge.ghost { background: rgba(255,77,141,0.15); color: var(--pink); }
 
   /* Info cards */
   .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
-  .info-card {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 14px; padding: 16px;
-  }
+  .info-card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
   .info-card .k { font-size: 12px; color: var(--sub); letter-spacing: 1px; margin-bottom: 4px; }
   .info-card .v { font-size: 16px; font-weight: 700; }
   .info-card .v small { font-size: 12px; color: var(--sub); font-weight: 400; }
   .info-card.warn { border-color: rgba(255,107,53,0.4); }
   .info-card.warn .v { color: var(--orange); }
 
-  .tips {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: 14px; padding: 18px; margin-top: 12px;
-  }
+  .tips { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-top: 12px; }
   .tips h3 { font-size: 15px; margin-bottom: 10px; color: var(--gold); letter-spacing: 1px; }
   .tips li { list-style: none; padding: 5px 0 5px 22px; position: relative; font-size: 14px; color: var(--txt); }
   .tips li::before { content: "•"; position: absolute; left: 6px; color: var(--orange); font-weight: 700; }
 
-  footer {
-    text-align: center; margin-top: 44px; color: var(--sub);
-    font-size: 12px; letter-spacing: 1px;
-  }
+  footer { text-align: center; margin-top: 44px; color: var(--sub); font-size: 12px; letter-spacing: 1px; }
   footer .heart { color: var(--pink); }
 </style>
 </head>
@@ -169,6 +138,29 @@
     <h1>酒搭子出逃團 · 香港遊</h1>
     <div class="subtitle">2026.10.24 · 週六 · 海洋公園萬聖節 + 蘭桂坊</div>
     <div class="slogan">白天刷刺激、闖鬼屋，晚上蘭桂坊續攤喝酒 ——<br>這才是<b>酒搭子</b>的香港一日。</div>
+  </div>
+
+  <!-- 园区地图 -->
+  <div class="sec-label map"><span class="dot"></span>園區地圖 <span class="hint">項目在哪</span></div>
+  <div class="map">
+    <div class="zone summit">
+      <div class="zone-title">⛰️ 高峰樂園 · 山上</div>
+      <div class="zone-body">
+        <div class="zcell"><div class="zc-name">動感天地</div><div class="zc-items">翻天覆地 <span class="star">★</span><br>動感快車</div></div>
+        <div class="zcell"><div class="zc-name">海洋天地</div><div class="zc-items">狂野龍捲風<br>沖天搖擺船<br>水母萬花筒 · 摩天塔</div></div>
+        <div class="zcell"><div class="zc-name">冰極天地</div><div class="zc-items">南極奇觀（企鵝）</div></div>
+        <div class="zcell ghost"><div class="zc-name">鬼屋區</div><div class="zc-items">陰陽路棺材仔 <span class="star">★</span><br>詭域瘋人院</div></div>
+      </div>
+    </div>
+    <div class="transit"><span class="arrow">⇅</span> 海洋列車 4 分鐘（纜車 18:30 收班）<span class="arrow">⇅</span></div>
+    <div class="zone waterfront">
+      <div class="zone-title">🌊 海濱樂園 · 山下</div>
+      <div class="zone-body">
+        <div class="zcell"><div class="zc-name">夢幻水都</div><div class="zc-items">海洋奇觀（大魚缸）</div></div>
+        <div class="zcell"><div class="zc-name">入口</div><div class="zc-items">12:00 入園</div></div>
+      </div>
+    </div>
+    <div class="map-note">一次上、一次下 —— 12:30 列車上山，20:10 列車下山，不折返</div>
   </div>
 
   <!-- 白天 -->
@@ -205,10 +197,12 @@
     <div class="tl-item after hl"><span class="tl-time">21:15</span> <span class="tl-name">到中環，直落蘭桂坊 <span class="star">🍻</span></span><div class="tl-note">酒搭子主場，喝起來</div></div>
   </div>
 
-  <!-- 實用信息 -->
-  <div class="sec-label day"><span class="dot"></span>實用信息 <span class="hint">出門前看</span></div>
+  <!-- 門票 & 實用信息 -->
+  <div class="sec-label day"><span class="dot"></span>門票 & 實用信息 <span class="hint">出門前看</span></div>
   <div class="info-grid">
-    <div class="info-card"><div class="k">門票</div><div class="v">HK$538 <small>成人</small> + HK$280 <small>三重驚嚇</small></div></div>
+    <div class="info-card"><div class="k">入園門票</div><div class="v">HK$538 <small>成人（必買）</small></div></div>
+    <div class="info-card"><div class="k">鬼屋單票</div><div class="v">HK$130 <small>/ 個 · 可進園再買</small></div></div>
+    <div class="info-card"><div class="k">鬼屋組合</div><div class="v">HK$280 <small>3 個打包 · 不用買</small></div></div>
     <div class="info-card"><div class="k">天氣</div><div class="v">26°C 多雲 <small>晚上帶薄外套</small></div></div>
     <div class="info-card warn"><div class="k">鬼屋開放</div><div class="v">17:00 – 23:00</div></div>
     <div class="info-card warn"><div class="k">機動遊戲關閉</div><div class="v">18:30 關</div></div>
@@ -217,10 +211,12 @@
   </div>
 
   <div class="tips">
-    <h3>三個提醒</h3>
+    <h3>五個提醒</h3>
+    <li><b>門票：入園票（HK$538）提前網上買</b>，避開現場排隊；<b>鬼屋票進園再買</b>，單票 HK$130/個，只去 1–2 個就別買 HK$280 的組合（3 個打包，用不完）。</li>
     <li><b>刺激項目 18:30 前刷完</b> —— 高峰日排隊 20–40 分鐘/項，4 個刺激是上限，別貪多。</li>
     <li><b>午餐要嘛入園前吃、要嘛 14:30 山上簡餐</b>，別在飯點跟人擠。</li>
     <li><b>鬼屋就玩山上 2 個</b>（陰陽路 + 詭域瘋人院），山下的 Voodoo Boo 要下山、你 21:00 要走，跳過。</li>
+    <li><b>入園門票已含大部分萬聖節活動</b>（香港靈異結界、Cosplay 厲鬼派對等），只有 4 個指定鬼屋 + OPPA 表演要另買票。</li>
   </div>
 
   <footer>酒搭子出逃團 · 2026.10.24 <span class="heart">♥</span> 香港</footer>
