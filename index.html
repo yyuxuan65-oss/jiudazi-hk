@@ -70,24 +70,15 @@
   .sec-label.map .dot { background: var(--gold); box-shadow: 0 0 10px var(--gold); }
   .sec-label .hint { font-size: 13px; font-weight: 400; color: var(--sub); margin-left: auto; }
 
-  /* Map */
-  .map { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 16px; }
-  .zone { border-radius: 12px; padding: 14px; }
-  .zone.summit { border: 1px solid rgba(255,107,53,0.45); background: linear-gradient(180deg, rgba(255,107,53,0.08), transparent); }
-  .zone.waterfront { border: 1px solid rgba(180,77,255,0.45); background: linear-gradient(180deg, rgba(180,77,255,0.08), transparent); }
-  .zone-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; letter-spacing: 1px; }
-  .zone.summit .zone-title { color: var(--orange); }
-  .zone.waterfront .zone-title { color: var(--purple); }
-  .zone-body { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .zcell { background: var(--bg2); border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; }
-  .zcell.ghost { border-color: rgba(255,77,141,0.5); }
-  .zc-name { font-size: 12px; color: var(--sub); letter-spacing: 0.5px; margin-bottom: 4px; }
-  .zcell.ghost .zc-name { color: var(--pink); }
-  .zc-items { font-size: 13.5px; font-weight: 600; line-height: 1.5; }
-  .zc-items .star { color: var(--gold); }
-  .transit { text-align: center; margin: 12px 0; font-size: 13px; color: var(--gold); letter-spacing: 1px; font-weight: 600; }
-  .transit .arrow { font-size: 15px; }
-  .map-note { font-size: 12px; color: var(--sub); margin-top: 12px; text-align: center; }
+  /* Official map */
+  .official-map { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 12px; }
+  .official-map img { width: 100%; border-radius: 10px; display: block; }
+  .map-src { font-size: 11px; color: var(--sub); text-align: center; margin-top: 8px; }
+  .map-src a { color: var(--sub); text-decoration: underline; }
+
+  /* SVG route map */
+  .map-svg { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 8px; }
+  .map-svg svg { width: 100%; height: auto; display: block; }
 
   /* Timeline */
   .timeline { position: relative; padding-left: 26px; }
@@ -140,27 +131,47 @@
     <div class="slogan">白天刷刺激、闖鬼屋，晚上蘭桂坊續攤喝酒 ——<br>這才是<b>酒搭子</b>的香港一日。</div>
   </div>
 
-  <!-- 园区地图 -->
-  <div class="sec-label map"><span class="dot"></span>園區地圖 <span class="hint">項目在哪</span></div>
-  <div class="map">
-    <div class="zone summit">
-      <div class="zone-title">⛰️ 高峰樂園 · 山上</div>
-      <div class="zone-body">
-        <div class="zcell"><div class="zc-name">動感天地</div><div class="zc-items">翻天覆地 <span class="star">★</span><br>動感快車</div></div>
-        <div class="zcell"><div class="zc-name">海洋天地</div><div class="zc-items">狂野龍捲風<br>沖天搖擺船<br>水母萬花筒 · 摩天塔</div></div>
-        <div class="zcell"><div class="zc-name">冰極天地</div><div class="zc-items">南極奇觀（企鵝）</div></div>
-        <div class="zcell ghost"><div class="zc-name">鬼屋區</div><div class="zc-items">陰陽路棺材仔 <span class="star">★</span><br>詭域瘋人院</div></div>
-      </div>
-    </div>
-    <div class="transit"><span class="arrow">⇅</span> 海洋列車 4 分鐘（纜車 18:30 收班）<span class="arrow">⇅</span></div>
-    <div class="zone waterfront">
-      <div class="zone-title">🌊 海濱樂園 · 山下</div>
-      <div class="zone-body">
-        <div class="zcell"><div class="zc-name">夢幻水都</div><div class="zc-items">海洋奇觀（大魚缸）</div></div>
-        <div class="zcell"><div class="zc-name">入口</div><div class="zc-items">12:00 入園</div></div>
-      </div>
-    </div>
-    <div class="map-note">一次上、一次下 —— 12:30 列車上山，20:10 列車下山，不折返</div>
+  <!-- 官方地图 -->
+  <div class="sec-label map"><span class="dot"></span>官方園區地圖 <span class="hint">真實地形</span></div>
+  <div class="official-map">
+    <img src="official-map.png" alt="香港海洋公園官方園區地圖">
+    <div class="map-src">地圖來源：<a href="https://map.oceanpark.com.hk" target="_blank" rel="noopener">海洋公園官方互動地圖</a>（左=海濱樂園山下 · 右=高峰樂園山上）</div>
+  </div>
+
+  <!-- 路线图 -->
+  <div class="sec-label map"><span class="dot"></span>項目位置 + 動線 <span class="hint">按這個走</span></div>
+  <div class="map-svg">
+    <svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="項目位置與上下山動線示意圖">
+      <path d="M20 310 Q200 192 380 310 L380 30 Q200 62 20 30 Z" fill="#1b1432" stroke="#ff6b35" stroke-width="2"/>
+      <text x="200" y="54" text-anchor="middle" fill="#ff6b35" font-size="16" font-weight="700">⛰️ 高峰樂園 · 山上</text>
+      <rect x="28" y="76" width="170" height="92" rx="10" fill="#221a3a" stroke="#3a2f5e"/>
+      <text x="40" y="98" fill="#a89fc4" font-size="12">動感天地</text>
+      <circle cx="50" cy="119" r="3.5" fill="#ff6b35"/><text x="60" y="124" fill="#f5f0e8" font-size="13" font-weight="600">翻天覆地 ★</text>
+      <circle cx="50" cy="142" r="3.5" fill="#ff6b35"/><text x="60" y="147" fill="#f5f0e8" font-size="13" font-weight="600">動感快車</text>
+      <rect x="202" y="76" width="170" height="92" rx="10" fill="#221a3a" stroke="#3a2f5e"/>
+      <text x="214" y="98" fill="#a89fc4" font-size="12">海洋天地</text>
+      <circle cx="224" cy="119" r="3.5" fill="#ff6b35"/><text x="234" y="124" fill="#f5f0e8" font-size="13" font-weight="600">狂野龍捲風</text>
+      <circle cx="224" cy="142" r="3.5" fill="#ff6b35"/><text x="234" y="147" fill="#f5f0e8" font-size="13" font-weight="600">沖天搖擺船</text>
+      <text x="234" y="163" fill="#a89fc4" font-size="11">水母萬花筒 · 摩天塔</text>
+      <rect x="28" y="182" width="170" height="92" rx="10" fill="#221a3a" stroke="#3a2f5e"/>
+      <text x="40" y="204" fill="#a89fc4" font-size="12">冰極天地</text>
+      <circle cx="50" cy="225" r="3.5" fill="#ff6b35"/><text x="60" y="230" fill="#f5f0e8" font-size="13" font-weight="600">南極奇觀（企鵝）</text>
+      <rect x="202" y="182" width="170" height="92" rx="10" fill="#221a3a" stroke="#ff4d8d"/>
+      <text x="214" y="204" fill="#ff4d8d" font-size="12">鬼屋區</text>
+      <circle cx="224" cy="225" r="3.5" fill="#ff4d8d"/><text x="234" y="230" fill="#f5f0e8" font-size="13" font-weight="600">陰陽路棺材仔 ★</text>
+      <circle cx="224" cy="248" r="3.5" fill="#ff4d8d"/><text x="234" y="253" fill="#f5f0e8" font-size="13" font-weight="600">詭域瘋人院</text>
+      <line x1="200" y1="310" x2="200" y2="356" stroke="#f0c24b" stroke-width="2" stroke-dasharray="6 4"/>
+      <text x="200" y="340" text-anchor="middle" fill="#f0c24b" font-size="12" font-weight="700">海洋列車 4 分鐘</text>
+      <path d="M20 356 Q80 348 200 356 T380 356 L380 520 L20 520 Z" fill="#171034" stroke="#b44dff" stroke-width="2"/>
+      <text x="200" y="390" text-anchor="middle" fill="#b44dff" font-size="16" font-weight="700">🌊 海濱樂園 · 山下</text>
+      <rect x="28" y="410" width="170" height="70" rx="10" fill="#221a3a" stroke="#3a2f5e"/>
+      <text x="40" y="432" fill="#a89fc4" font-size="12">夢幻水都</text>
+      <circle cx="50" cy="454" r="3.5" fill="#b44dff"/><text x="60" y="459" fill="#f5f0e8" font-size="13" font-weight="600">海洋奇觀（大魚缸）</text>
+      <rect x="202" y="410" width="170" height="70" rx="10" fill="#221a3a" stroke="#3a2f5e"/>
+      <text x="214" y="432" fill="#a89fc4" font-size="12">入口</text>
+      <circle cx="224" cy="454" r="3.5" fill="#b44dff"/><text x="234" y="459" fill="#f5f0e8" font-size="13" font-weight="600">12:00 入園</text>
+      <text x="200" y="552" text-anchor="middle" fill="#a89fc4" font-size="12">12:30 列車上山 → 山上玩 → 20:10 列車下山（不折返）</text>
+    </svg>
   </div>
 
   <!-- 白天 -->
